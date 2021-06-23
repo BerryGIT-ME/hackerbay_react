@@ -2,6 +2,8 @@ import BoardSize from "./components/BoardSize";
 import { BoardSizeProvider } from "./context/BoardSizeContext";
 import { GreenSpriteProvider } from "./context/GreenSpriteContext";
 import { CenterContextProvider } from "./context/CenterContext";
+import { GreenSpriteNoContextProvider } from "./context/GreenSpriteNoContext";
+import { CountContextProvider } from "./context/CountContext";
 import Column from "./components/Column";
 import "./app.css";
 
@@ -15,8 +17,12 @@ function App() {
       <BoardSizeProvider>
         <GreenSpriteProvider>
           <CenterContextProvider>
-            <BoardSize />
-            <Column />
+            <GreenSpriteNoContextProvider>
+              <CountContextProvider>
+                <BoardSize />
+                <Column />
+              </CountContextProvider>
+            </GreenSpriteNoContextProvider>
           </CenterContextProvider>
         </GreenSpriteProvider>
       </BoardSizeProvider>

@@ -2,11 +2,13 @@ import { useContext, useEffect } from "react";
 import { BoardSizeContext } from "../context/BoardSizeContext";
 import { GreenSpriteContext } from "../context/GreenSpriteContext";
 import { CenterContext } from "../context/CenterContext";
+import { CountContext } from "../context/CountContext";
 
 const BoardSize = () => {
   const [size, setSize] = useContext(BoardSizeContext);
   const [sprites, setSprites] = useContext(GreenSpriteContext);
   const [centre, setCentre] = useContext(CenterContext);
+  const [count, setcount] = useContext(CountContext);
 
   useEffect(() => {
     // Set the board size
@@ -85,25 +87,16 @@ const BoardSize = () => {
           _centre.column = _centre.column - 1;
           setCentre(_centre);
           console.log(centre);
-          document.getElementById(`${centre.row}${centre.column}`).focus();
-
-          // check for board  edge
-          //  update centre
-          // setfocus
+          setFocus(centre);
         }
       }
       if (e.key === "ArrowDown") {
-        console.log(centre.column, column_val);
         if (centre.column < column_val - 1) {
           _centre = centre;
           _centre.column = _centre.column + 1;
           setCentre(_centre);
           console.log(centre);
-          document.getElementById(`${centre.row}${centre.column}`).focus();
-
-          // check for board  edge
-          //  update centre
-          // setfocus
+          setFocus(centre);
         }
       }
       if (e.key === "ArrowLeft") {
@@ -113,7 +106,7 @@ const BoardSize = () => {
           _centre.row = _centre.row - 1;
           setCentre(_centre);
           console.log(centre);
-          document.getElementById(`${centre.row}${centre.column}`).focus();
+          setFocus(centre);
 
           // check for board  edge
           //  update centre
@@ -127,7 +120,7 @@ const BoardSize = () => {
           _centre.row = _centre.row + 1;
           setCentre(_centre);
           console.log(centre);
-          document.getElementById(`${centre.row}${centre.column}`).focus();
+          setFocus(centre);
 
           // check for board  edge
           //  update centre
@@ -138,6 +131,18 @@ const BoardSize = () => {
 
     return () => {};
   }, []);
+
+  const addLeadingZeros = (num) => {
+    return String(num).padStart(3, "0");
+  };
+
+  const setFocus = (centre) => {
+    document
+      .getElementById(
+        `${addLeadingZeros(centre.row)}${addLeadingZeros(centre.column)}`
+      )
+      .focus();
+  };
 
   return null;
 };
