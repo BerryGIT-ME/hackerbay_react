@@ -16,6 +16,8 @@ const Square = ({ row, column }) => {
   const [spriteNo, setspriteNo] = useContext(GreenSpriteNoContext);
   const [count, setcount] = useContext(CountContext);
 
+  // empty array passed as the last argument of useEffect ensures that
+  //  it runs only once
   useEffect(() => {
     //set the no of sprites
     setspriteNo(sprites.row.length);
@@ -64,7 +66,7 @@ const Square = ({ row, column }) => {
   };
 
   const addLeadingZeros = (num) => {
-    return String(num).padStart(3, "0");
+    return String(num).padStart(4, "0");
   };
 
   return (

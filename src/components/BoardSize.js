@@ -2,13 +2,11 @@ import { useContext, useEffect } from "react";
 import { BoardSizeContext } from "../context/BoardSizeContext";
 import { GreenSpriteContext } from "../context/GreenSpriteContext";
 import { CenterContext } from "../context/CenterContext";
-import { CountContext } from "../context/CountContext";
 
 const BoardSize = () => {
   const [size, setSize] = useContext(BoardSizeContext);
   const [sprites, setSprites] = useContext(GreenSpriteContext);
   const [centre, setCentre] = useContext(CenterContext);
-  const [count, setcount] = useContext(CountContext);
 
   useEffect(() => {
     // Set the board size
@@ -43,15 +41,11 @@ const BoardSize = () => {
     let NoOfSprites = row_val;
     if (NoOfSprites < column_val) NoOfSprites = column_val;
 
-    let _sprites = {
-      row: [],
-      column: [],
-    };
+    let _sprites = sprites;
     let tempRow, tempCol;
     for (let i = 0; i < NoOfSprites; i++) {
       // create a random pair of value for sprite locations
       // constrianedby the row and column values
-
       tempRow = Math.floor(Math.random() * row_val);
       tempCol = Math.floor(Math.random() * column_val);
       // if these random value pair have already been assigned repeat the iteration
@@ -86,16 +80,15 @@ const BoardSize = () => {
           _centre = centre;
           _centre.column = _centre.column - 1;
           setCentre(_centre);
-          console.log(centre);
           setFocus(centre);
         }
       }
       if (e.key === "ArrowDown") {
+        console.log("move down");
         if (centre.column < column_val - 1) {
           _centre = centre;
           _centre.column = _centre.column + 1;
           setCentre(_centre);
-          console.log(centre);
           setFocus(centre);
         }
       }
@@ -105,12 +98,7 @@ const BoardSize = () => {
           _centre = centre;
           _centre.row = _centre.row - 1;
           setCentre(_centre);
-          console.log(centre);
           setFocus(centre);
-
-          // check for board  edge
-          //  update centre
-          // setfocus
         }
       }
       if (e.key === "ArrowRight") {
@@ -119,12 +107,7 @@ const BoardSize = () => {
           _centre = centre;
           _centre.row = _centre.row + 1;
           setCentre(_centre);
-          console.log(centre);
           setFocus(centre);
-
-          // check for board  edge
-          //  update centre
-          // setfocus
         }
       }
     });
@@ -133,7 +116,7 @@ const BoardSize = () => {
   }, []);
 
   const addLeadingZeros = (num) => {
-    return String(num).padStart(3, "0");
+    return String(num).padStart(4, "0");
   };
 
   const setFocus = (centre) => {

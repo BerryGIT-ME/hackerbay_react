@@ -10,10 +10,10 @@ import "./app.css";
 function App() {
   return (
     <div className="container">
-      <p>
+      <h3>
         Click the red button and move around with the direction keys until all
         the green buttons are cleared
-      </p>
+      </h3>
       <BoardSizeProvider>
         <GreenSpriteProvider>
           <CenterContextProvider>
