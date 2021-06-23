@@ -1,41 +1,36 @@
-import React, { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { BoardSizeContext } from "../context/BoardSizeContext";
 
 const BoardSize = () => {
   const [size, setSize] = useContext(BoardSizeContext);
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    let row_val = parseInt(prompt("board height"));
+    let column_val = parseInt(prompt("board width"));
 
-    console.log();
-
-    if (
-      Number.isInteger(parseInt(document.getElementById("row").value)) &&
-      Number.isInteger(parseInt(document.getElementById("column").value))
-    ) {
+    if (Number.isInteger(row_val) && Number.isInteger(column_val)) {
+      let row = new Array(row_val);
+      let column = new Array(column_val);
+      //
+      for (let i = 0; i < row_val; i++) {
+        row[i] = i;
+      }
+      for (let i = 0; i < column_val; i++) {
+        column[i] = i;
+      }
       let _size = { ...size };
-      _size.row = parseInt(document.getElementById("row").value);
-      _size.column = parseInt(document.getElementById("column").value);
+      _size = {
+        row: row,
+        column: column,
+      };
+
       setSize(_size);
-      return;
     } else {
-      alert("make sure the row/column are numbers");
-      return;
+      alert("Invalid inputs");
     }
-  };
-  return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="row">Number of rows:</label>
-        <br></br>
-        <input type="text" id="row" name="row" />
-        <br></br>
-        <label htmlFor="column">Number of columns:</label>
-        <br></br>
-        <input type="text" id="column" name="column" />
-        <input type="submit" value="Submit"></input>
-      </form>
-    </>
-  );
+
+    return () => {};
+  }, []);
+  return null;
 };
 
 export default BoardSize;

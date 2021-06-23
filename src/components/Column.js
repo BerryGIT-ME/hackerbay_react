@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { BoardSizeContext } from "../context/BoardSizeContext";
-import Square from "./Square";
+import Row from "./Row";
 
-const Row = ({ column }) => {
+const Column = () => {
   const [size] = useContext(BoardSizeContext);
 
   useEffect(() => {
@@ -11,11 +11,12 @@ const Row = ({ column }) => {
 
   return (
     <div>
-      {size.row.map((value, index) => {
-        return <Square key={index} row={index} column={column} />;
+      <br></br>
+      {size.column.map((value, index) => {
+        return <Row key={index} column={index} />;
       })}
     </div>
   );
 };
 
-export default Row;
+export default Column;

@@ -2,14 +2,14 @@ import React, { useState, createContext } from "react";
 
 export const BoardSizeContext = createContext();
 
-export const BoardSizeProvider = (props) => {
+export const BoardSizeProvider = ({ children }) => {
   const [size, setSize] = useState({
-    row: 0,
-    column: 0,
+    row: [],
+    column: [],
   });
   return (
     <BoardSizeContext.Provider value={[size, setSize]}>
-      {props.children}
+      {children}
     </BoardSizeContext.Provider>
   );
 };

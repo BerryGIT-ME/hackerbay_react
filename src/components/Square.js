@@ -1,9 +1,10 @@
-import React from "react";
-
-const Square = () => {
+const Square = ({ row, column }) => {
   return (
     <>
-      <button>button</button>
+      <button className="square">
+        {row}
+        {column}
+      </button>
     </>
   );
 };
