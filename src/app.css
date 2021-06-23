@@ -9,3 +9,14 @@
   text-align: center;
   width: 34px;
 }
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+.cleared {
+  background: #fff;
+}
