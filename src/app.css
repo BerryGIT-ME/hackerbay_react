@@ -1,3 +1,6 @@
+body {
+  background-image: linear-gradient(to right top, #ba83ca);
+}
 .square {
   background: #fff;
   border: 1px solid #999;
