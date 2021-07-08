@@ -9,6 +9,7 @@ import Column from "./components/Column";
 import Navbar from "./components/Navbar";
 import "./app.css";
 
+// some comment
 function App() {
   const [play, setplay] = useState({
     play: false,
