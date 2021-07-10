@@ -1,6 +1,8 @@
 import { useState } from "react";
-import * as Boardgame from "./utils/simpleReactBoardGame";
+import * as _Boardgame from "./utils/simpleReactBoardGame";
 import BoardGameComponent from "./components/BoardGameComponent";
+import SnakeXenxiaComponent from "./components/SnakeXenxiaComponent";
+import SpaceInvadersComponent from "./components/SpaceInvadersComponent";
 import Navbar from "./components/Navbar";
 import Cards from "./components/Cards";
 import "./app.css";
@@ -20,15 +22,15 @@ function App() {
         setplay({ ...play, play: true, simpleReactBoardGame: true });
         break;
       case "Space Invaders":
-        setplay({ ...play, play: true, simpleReactBoardGame: true });
+        setplay({ ...play, play: true, spaceInvader: true });
         break;
       case "Snake Xenxia":
-        setplay({ ...play, play: true, simpleReactBoardGame: true });
+        setplay({ ...play, play: true, snakeXenxia: true });
         break;
       default:
     }
   };
-  let gameCards = Boardgame.gameCards;
+  let gameCards = _Boardgame.gameCards;
 
   return (
     <div>
@@ -45,9 +47,9 @@ function App() {
           </div>
         )}
         {play.simpleReactBoardGame && <BoardGameComponent />}
+        {play.spaceInvader && <SpaceInvadersComponent />}
+        {play.snakeXenxia && <SnakeXenxiaComponent />}
       </div>
-
-      <div className="container screen"></div>
     </div>
   );
 }
