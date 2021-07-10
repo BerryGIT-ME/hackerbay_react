@@ -23,3 +23,17 @@ body {
 .cleared {
   background: #fff;
 }
+
+.screen {
+  padding: 10px;
+  height: 400px;
+  width: 400px;
+  border: solid black 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pixel {
+  width: 20px;
+  height: 20px;
+}

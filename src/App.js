@@ -1,30 +1,35 @@
-import BoardSize from "./components/BoardSize";
-import { BoardSizeProvider } from "./context/BoardSizeContext";
-import { GreenSpriteProvider } from "./context/GreenSpriteContext";
-import { CenterContextProvider } from "./context/CenterContext";
-import { GreenSpriteNoContextProvider } from "./context/GreenSpriteNoContext";
-import { CountContextProvider } from "./context/CountContext";
 import { useState } from "react";
-import Column from "./components/Column";
+import * as Boardgame from "./utils/simpleReactBoardGame";
+import BoardGameComponent from "./components/BoardGameComponent";
 import Navbar from "./components/Navbar";
+import Cards from "./components/Cards";
 import "./app.css";
 
 // some comment
 function App() {
   const [play, setplay] = useState({
     play: false,
-    reactBoardGame: false,
+    simpleReactBoardGame: false,
+    spaceInvader: false,
+    snakeXenxia: false,
   });
 
   const handleStartGameClick = (str = "") => {
     switch (str) {
       case "Simple React Board Game":
-        setplay({ ...play, play: true, reactBoardGame: true });
+        setplay({ ...play, play: true, simpleReactBoardGame: true });
+        break;
+      case "Space Invaders":
+        setplay({ ...play, play: true, simpleReactBoardGame: true });
+        break;
+      case "Snake Xenxia":
+        setplay({ ...play, play: true, simpleReactBoardGame: true });
         break;
       default:
-        setplay({ ...play, play: false, reactBoardGame: false });
     }
   };
+  let gameCards = Boardgame.gameCards;
+
   return (
     <div>
       <Navbar />
@@ -33,55 +38,16 @@ function App() {
         {!play.play && (
           <div className="container">
             <div className="row">
-              <div className="col-lg-3">
-                <img
-                  src="https://images.unsplash.com/photo-1559480423-a4c7efb6946a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTIwfHxib2FyZCUyMGdhbWVzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                  className="card-img-top"
-                  alt="..."
-                />
-                <div className="card-body">
-                  <h5 className="card-title">Simple React Board Game</h5>
-                  <p className="card-text">
-                    Instructions: Click the start game button and define the
-                    size of the game board. Typical values are - height: 10 and
-                    width: 10
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      handleStartGameClick("Simple React Board Game")
-                    }
-                    className="btn btn-primary"
-                  >
-                    Start Game
-                  </button>
-                </div>
-              </div>
+              {gameCards.map((card, index) => (
+                <Cards key={index} {...card} startGame={handleStartGameClick} />
+              ))}
             </div>
           </div>
         )}
-        {play.reactBoardGame && (
-          <div>
-            <h4>
-              Click the red button and move around with the direction keys
-              (arrow keys on the keyboard) until all the green buttons are
-              cleared
-            </h4>
-            <BoardSizeProvider>
-              <GreenSpriteProvider>
-                <CenterContextProvider>
-                  <GreenSpriteNoContextProvider>
-                    <CountContextProvider>
-                      <BoardSize />
-                      <Column />
-                    </CountContextProvider>
-                  </GreenSpriteNoContextProvider>
-                </CenterContextProvider>
-              </GreenSpriteProvider>
-            </BoardSizeProvider>
-          </div>
-        )}
+        {play.simpleReactBoardGame && <BoardGameComponent />}
       </div>
+
+      <div className="container screen"></div>
     </div>
   );
 }
