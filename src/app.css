@@ -1,6 +1,17 @@
 body {
   background-image: linear-gradient(to right top, #ba83ca);
 }
+
+/* Landing page css */
+.round {
+  padding: 10px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* simple react board game css */
 .square {
   background: #fff;
   border: 1px solid #999;
@@ -24,16 +35,60 @@ body {
   background: #fff;
 }
 
+/* create screen size for all pixelated games css */
 .screen {
-  padding: 10px;
-  height: 400px;
-  width: 400px;
+  margin: 0;
+  padding: 0;
+  height: 410px;
+  width: 410px;
   border: solid black 5px;
   display: flex;
   flex-wrap: wrap;
 }
 
 .pixel {
+  border: solid red 1px;
+  border-radius: 2px;
   width: 20px;
   height: 20px;
+}
+
+.controls {
+  position: relative;
+  height: 150px;
+  width: 200px;
+}
+
+/* create screen size for all wack a mole css */
+.WackAMoleScreen {
+  margin: 0;
+  padding: 0;
+  height: 410px;
+  width: 410px;
+  border: solid black 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.box {
+  border: solid red 1px;
+  border-radius: 2px;
+  width: 40px;
+  height: 40px;
+}
+.mole {
+  background-image: url("img/mole1.png");
+  background-size: contain;
+}
+.OK {
+  background-color: aquamarine;
+  width: fit-content;
+}
+.hazard {
+  background-color: rgb(252, 252, 93);
+  width: fit-content;
+}
+.danger {
+  background-color: rgb(247, 34, 76);
+  width: fit-content;
 }

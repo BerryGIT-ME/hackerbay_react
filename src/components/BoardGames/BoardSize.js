@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
-import { BoardSizeContext } from "../context/BoardSizeContext";
-import { GreenSpriteContext } from "../context/GreenSpriteContext";
-import { CenterContext } from "../context/CenterContext";
+import { BoardSizeContext } from "../../context/BoardSizeContext";
+import { GreenSpriteContext } from "../../context/GreenSpriteContext";
+import { CenterContext } from "../../context/CenterContext";
 
 const BoardSize = () => {
   const [size, setSize] = useContext(BoardSizeContext);
@@ -74,42 +74,17 @@ const BoardSize = () => {
 
     // add event listener for keyboard
     document.addEventListener("keydown", (e) => {
-      if (e.key === "ArrowUp") {
-        console.log("move up");
-        if (centre.column > 0) {
-          _centre = centre;
-          _centre.column = _centre.column - 1;
-          setCentre(_centre);
-          setFocus(centre);
-        }
-      }
-      if (e.key === "ArrowDown") {
-        console.log("move down");
-        if (centre.column < column_val - 1) {
-          _centre = centre;
-          _centre.column = _centre.column + 1;
-          setCentre(_centre);
-          setFocus(centre);
-        }
-      }
-      if (e.key === "ArrowLeft") {
-        console.log("move Left");
-        if (centre.row > 0) {
-          _centre = centre;
-          _centre.row = _centre.row - 1;
-          setCentre(_centre);
-          setFocus(centre);
-        }
-      }
-      if (e.key === "ArrowRight") {
-        console.log("move Right");
-        if (centre.row < row_val - 1) {
-          _centre = centre;
-          _centre.row = _centre.row + 1;
-          setCentre(_centre);
-          setFocus(centre);
-        }
-      }
+      _centre = centre;
+      if (e.key === "ArrowUp" && centre.column > 0)
+        _centre.column = _centre.column - 1;
+      else if (e.key === "ArrowDown" && centre.column < column_val - 1)
+        _centre.column = _centre.column + 1;
+      else if (e.key === "ArrowLeft" && centre.row > 0)
+        _centre.row = _centre.row - 1;
+      else if (e.key === "ArrowRight" && centre.row < row_val - 1)
+        _centre.row = _centre.row + 1;
+      setCentre(_centre);
+      setFocus(centre);
     });
 
     return () => {};

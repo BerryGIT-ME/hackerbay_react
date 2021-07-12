@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { BoardSizeContext } from "../context/BoardSizeContext";
+import { BoardSizeContext } from "../../context/BoardSizeContext";
 import Square from "./Square";
 
 const Row = ({ column }) => {

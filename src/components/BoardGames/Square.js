@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
-import { GreenSpriteContext } from "../context/GreenSpriteContext";
-import { CenterContext } from "../context/CenterContext";
-import { GreenSpriteNoContext } from "../context/GreenSpriteNoContext";
-import { CountContext } from "../context/CountContext";
+import { GreenSpriteContext } from "../../context/GreenSpriteContext";
+import { CenterContext } from "../../context/CenterContext";
+import { GreenSpriteNoContext } from "../../context/GreenSpriteNoContext";
+import { CountContext } from "../../context/CountContext";
 
 const Square = ({ row, column }) => {
   // states
@@ -21,7 +21,6 @@ const Square = ({ row, column }) => {
   useEffect(() => {
     //set the no of sprites
     setspriteNo(sprites.row.length);
-    console.log(spriteNo);
 
     for (let i = 0; i < sprites.row.length; i++) {
       if (sprites.row[i] === row && sprites.column[i] === column) {
@@ -41,12 +40,10 @@ const Square = ({ row, column }) => {
     _count++;
 
     setcount(_count);
-    console.log("the no of moves", count);
 
     if (isGreenSprite) {
       console.log("found green sprite");
       let _spriteNo = spriteNo;
-      console.log("sprite no is", _spriteNo);
       _spriteNo = _spriteNo - 1;
 
       if (_spriteNo <= 0) {

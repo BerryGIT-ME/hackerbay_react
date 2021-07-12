@@ -1,12 +1,13 @@
 import { useState } from "react";
 import * as _Boardgame from "./utils/simpleReactBoardGame";
-import BoardGameComponent from "./components/BoardGameComponent";
-import SnakeXenxiaComponent from "./components/SnakeXenxiaComponent";
-import SpaceInvadersComponent from "./components/SpaceInvadersComponent";
+import BoardGameComponent from "./components/BoardGames/BoardGameComponent";
+import SnakeXenxiaComponent from "./components/snakeXenxia/SnakeXenxiaComponent";
+import SpaceInvadersComponent from "./components/spaceInvaders/SpaceInvadersComponent";
+import WackAMole from "./components/wackAMole/WackAMole";
+import Introduction from "./components/Introduction";
 import Navbar from "./components/Navbar";
-import Cards from "./components/Cards";
+import Cards from "./components/BoardGames/Cards";
 import "./app.css";
-
 // some comment
 function App() {
   const [play, setplay] = useState({
@@ -14,6 +15,7 @@ function App() {
     simpleReactBoardGame: false,
     spaceInvader: false,
     snakeXenxia: false,
+    wackAMole: false,
   });
 
   const handleStartGameClick = (str = "") => {
@@ -27,6 +29,9 @@ function App() {
       case "Snake Xenxia":
         setplay({ ...play, play: true, snakeXenxia: true });
         break;
+      case "Wack A Mole":
+        setplay({ ...play, play: true, wackAMole: true });
+        break;
       default:
     }
   };
@@ -39,6 +44,7 @@ function App() {
       <div className="container">
         {!play.play && (
           <div className="container">
+            <Introduction />
             <div className="row">
               {gameCards.map((card, index) => (
                 <Cards key={index} {...card} startGame={handleStartGameClick} />
@@ -49,6 +55,7 @@ function App() {
         {play.simpleReactBoardGame && <BoardGameComponent />}
         {play.spaceInvader && <SpaceInvadersComponent />}
         {play.snakeXenxia && <SnakeXenxiaComponent />}
+        {play.wackAMole && <WackAMole />}
       </div>
     </div>
   );
