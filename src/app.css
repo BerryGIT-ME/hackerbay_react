@@ -92,3 +92,8 @@ body {
   background-color: rgb(247, 34, 76);
   width: fit-content;
 }
+.load-shortfall {
+  background-image: url("./electricity_ai.jpg");
+  object-fit: cover;
+  background-repeat: no-repeat;
+}

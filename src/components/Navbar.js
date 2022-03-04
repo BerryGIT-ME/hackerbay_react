@@ -4,8 +4,8 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="index.html">
-          My Games
+        <a className="navbar-brand" href="#">
+          A simple Interface for Demonstrating our Machine Learning application
         </a>
         <button
           className="navbar-toggler"

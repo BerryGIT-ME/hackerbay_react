@@ -1,13 +1,15 @@
 import { useState } from "react";
 import * as _Boardgame from "./utils/simpleReactBoardGame";
-import BoardGameComponent from "./components/BoardGames/BoardGameComponent";
-import SnakeXenxiaComponent from "./components/snakeXenxia/SnakeXenxiaComponent";
-import SpaceInvadersComponent from "./components/spaceInvaders/SpaceInvadersComponent";
-import WackAMole from "./components/wackAMole/WackAMole";
-import Introduction from "./components/Introduction";
+// import BoardGameComponent from "./components/BoardGames/BoardGameComponent";
+// import SnakeXenxiaComponent from "./components/snakeXenxia/SnakeXenxiaComponent";
+// import SpaceInvadersComponent from "./components/spaceInvaders/SpaceInvadersComponent";
+// import WackAMole from "./components/wackAMole/WackAMole";
+// import Introduction from "./components/Introduction";
 import Navbar from "./components/Navbar";
-import Cards from "./components/BoardGames/Cards";
+// import Cards from "./components/BoardGames/Cards";
 import "./app.css";
+import LoadShortFall from "./load-shortfall";
+
 // some comment
 function App() {
   const [play, setplay] = useState({
@@ -35,13 +37,24 @@ function App() {
       default:
     }
   };
+
   let gameCards = _Boardgame.gameCards;
 
   return (
-    <div>
+    <div style={{ height: "100vh" }}>
       <Navbar />
-      <br></br>
-      <div className="container">
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "80vh",
+        }}
+      >
+        {/* <Navbar />
+      <br></br> */}
+        <LoadShortFall />
+        {/* <div className="container">
         {!play.play && (
           <div className="container">
             <Introduction />
@@ -56,6 +69,7 @@ function App() {
         {play.spaceInvader && <SpaceInvadersComponent />}
         {play.snakeXenxia && <SnakeXenxiaComponent />}
         {play.wackAMole && <WackAMole />}
+      </div> */}
       </div>
     </div>
   );
